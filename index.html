@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Blank Opener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .input-link {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .open-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .open-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <script>
         function openWindowWithIframe() {
-            let url = prompt('Introduce el enlace:');
+            let url = document.getElementById('input-link').value;
             if (url) {
                 let win = window.open();
                 win.document.body.style.margin = '0';
@@ -18,11 +54,17 @@
                 iframe.style.margin = '0';
                 iframe.src = atob(url);
                 win.document.body.appendChild(iframe);
+            } else {
+                alert('Por favor, introduce un enlace.');
             }
         }
     </script>
 </head>
 <body>
-    <button onclick="openWindowWithIframe()">Abrir Enlace</button>
+    <div class="container">
+        <h1>About Blank Opener</h1>
+        <input id="input-link" type="text" class="input-link" placeholder="Introduce el enlace aquí...">
+        <button class="open-btn" onclick="openWindowWithIframe()">Abrir Enlace</button>
+    </div>
 </body>
 </html>
